@@ -1,0 +1,198 @@
+/* Kisii University portal - shared styles.
+   Edit colours ONLY in the two palette blocks below (light = :root, dark = html.dark).
+   Status colours mean the same everywhere: green = complete, amber = pending with a
+   valid reason, red = blocked. Orange is for actions (buttons). */
+
+:root {
+  /* Primary colours */
+  --primary-blue: #147DB8;
+  --accent-blue: #168BBE;
+  /* Backgrounds */
+  --background: #F3F6F8;
+  --card-background: #FFFFFF;
+  /* Actions */
+  --primary-orange: #EF6B1B;
+  /* Status colours */
+  --success-bg: #DCEFE2;  --success-text: #287A49;
+  --danger-bg: #F3DDDA;   --danger-text: #A33D3D;
+  --pending-bg: #F5E9DA;  --pending-text: #94612F;
+  /* Typography */
+  --text-primary: #202B36;
+  --text-secondary: #52606D;
+  /* Borders */
+  --border-color: #D9E1E7;
+
+  /* Derived (not in the original palette): tints of the colours above */
+  --sidebar-bg: var(--primary-blue);
+  --highlight: #E2F0F8;          /* hover / table header, a pale tint of the blue */
+  --notice-bg: #FCEBDD;          /* pale orange/red for notifications */
+  --notice-text: #8A3B0F;
+  --on-orange: #FFFFFF;
+}
+html.dark {
+  --primary-blue: #2B9AD6;
+  --accent-blue: #4FB0E6;
+  --background: #0F1A24;
+  --card-background: #172633;
+  --primary-orange: #F58A44;
+  --success-bg: #1B3426;  --success-text: #8FD3A8;
+  --danger-bg: #3E2222;   --danger-text: #F0A5A0;
+  --pending-bg: #3A2D1B;  --pending-text: #EBC28B;
+  --text-primary: #E6EDF3;
+  --text-secondary: #9FB1C1;
+  --border-color: #2A3B4B;
+
+  --sidebar-bg: #0D3F5E;
+  --highlight: #1D3547;
+  --notice-bg: #3A2519;
+  --notice-text: #F5B58A;
+  --on-orange: #1A0E05;
+}
+
+/* Short aliases used by the rules below. Don't edit these; change the palette above. */
+:root, html.dark {
+  --bg: var(--background); --sf: var(--card-background); --tx: var(--text-primary); --mu: var(--text-secondary);
+  --bd: var(--border-color); --br: var(--primary-blue); --hi: var(--highlight);
+  --gb: var(--success-bg); --gt: var(--success-text); --rb: var(--danger-bg); --rt: var(--danger-text);
+  --ab: var(--pending-bg); --at: var(--pending-text);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: var(--bg); color: var(--tx); font-size: 14px; line-height: 1.45; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- shell: blue sidebar left, content right ---------- */
+.shell { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+.side { background: var(--sidebar-bg); color: #fff; padding: 16px 12px; display: flex; flex-direction: column; position: sticky; top: 0; height: 100vh; overflow-y: auto; }
+.side-title { display: flex; align-items: center; gap: 10px; font-weight: 700; color: #fff; padding: 4px 8px 18px; font-size: 15px; }
+.side-title small { display: block; font-weight: 400; font-size: 11px; color: rgba(255,255,255,.8); }
+.logo { width: 32px; height: 32px; border-radius: 7px; background: #fff; color: var(--primary-blue); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex: none; }
+.side nav { flex: 1; }
+.side nav a { display: block; padding: 9px 12px; border-radius: 8px; color: rgba(255,255,255,.88); font-size: 13px; margin-bottom: 2px; }
+.side nav a:hover { background: rgba(255,255,255,.14); }
+.side nav a.on { background: #fff; color: var(--primary-blue); font-weight: 700; }
+.side-foot { display: flex; gap: 8px; flex-wrap: wrap; padding: 12px 4px 0; border-top: 1px solid rgba(255,255,255,.25); }
+.side .tbtn { background: rgba(255,255,255,.18); color: #fff; }
+.content { min-width: 0; }
+.mbar { display: none; background: var(--sidebar-bg); color: #fff; padding: 10px 14px; align-items: center; gap: 10px; font-weight: 700; position: sticky; top: 0; z-index: 20; }
+.mbar .tbtn { background: rgba(255,255,255,.18); color: #fff; }
+
+/* welcome header (top-right of the page) */
+.welcome { display: flex; justify-content: flex-end; align-items: center; gap: 12px; padding: 18px 24px 0; text-align: right; }
+.welcome h1 { margin: 0; font-size: 20px; color: var(--tx); }
+.welcome p { margin: 2px 0 0; font-size: 12px; color: var(--mu); }
+.avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--primary-blue); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex: none; }
+.rule { border: none; border-top: 2px solid var(--primary-blue); margin: 14px 24px 0; }
+.main { padding: 20px 24px 32px; max-width: 1000px; width: 100%; }
+
+/* generic small button (used on the login card and in the sidebar) */
+.tbtn { background: var(--hi); color: var(--br); border: none; border-radius: 999px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+
+/* ---------- text ---------- */
+h1 { font-size: 20px; margin: 0 0 2px; }
+h2 { font-size: 15px; margin: 0 0 8px; }
+.sub { color: var(--mu); font-size: 12px; margin: 0 0 16px; }
+.mu { color: var(--mu); }
+.note { font-size: 11px; color: var(--mu); margin-top: 4px; }
+.err-text { color: var(--rt); }
+.ok-text { color: var(--gt); }
+
+/* ---------- cards, stats ---------- */
+.card { background: var(--sf); border: 1px solid var(--bd); border-radius: 10px; padding: 14px; margin-bottom: 12px; }
+.card.red { border-color: var(--rt); }
+.card.green { border-color: var(--gt); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 14px; }
+.stat { background: var(--sf); border: 1px solid var(--bd); border-radius: 10px; padding: 12px; }
+.stat span { font-size: 12px; color: var(--mu); }
+.stat b { display: block; font-size: 22px; margin-top: 2px; }
+.row { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.row.start { justify-content: flex-start; }
+
+/* ---------- status boxes + pills ---------- */
+.box { border: 1px solid var(--bd); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px; font-size: 13px; }
+.box.r { border-color: var(--rt); background: var(--rb); }
+.box.a { border-color: var(--at); background: var(--ab); }
+.box.g { border-color: var(--gt); background: var(--gb); }
+.pill { font-size: 11px; padding: 2px 9px; border-radius: 999px; display: inline-block; white-space: nowrap; font-weight: 500; }
+.pill.r { background: var(--rb); color: var(--rt); }
+.pill.a { background: var(--ab); color: var(--at); }
+.pill.g { background: var(--gb); color: var(--gt); }
+.pill.n { background: var(--hi); color: var(--br); }
+
+/* ---------- forms, buttons ---------- */
+label { display: block; font-size: 12px; color: var(--mu); margin: 12px 0 4px; }
+input, select, textarea { width: 100%; background: var(--sf); color: var(--tx); border: 1px solid var(--bd); border-radius: 6px; padding: 9px; font-size: 13px; font-family: inherit; }
+input[type=checkbox] { width: auto; }
+input.bad { border-color: var(--rt); }
+.btn { background: var(--primary-orange); color: var(--on-orange); border: none; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer; }
+.btn:disabled { background: var(--bd); color: var(--mu); cursor: not-allowed; }
+.btn.ghost { background: transparent; color: var(--primary-orange); border: 1px solid var(--primary-orange); }
+.sm { background: var(--sf); color: var(--tx); border: 1px solid var(--bd); border-radius: 6px; padding: 4px 10px; font-size: 11px; cursor: pointer; }
+.chip { background: var(--hi); color: var(--br); border: none; border-radius: 999px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+
+/* ---------- progress bar ---------- */
+.bar { height: 8px; border-radius: 4px; background: var(--hi); overflow: hidden; margin-top: 6px; }
+.bar i { display: block; height: 100%; background: var(--br); border-radius: 4px; }
+.bar.g i { background: var(--gt); }
+
+/* ---------- tables ---------- */
+.tw { overflow-x: auto; border: 1px solid var(--bd); border-radius: 10px; background: var(--sf); margin-bottom: 12px; }
+table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 560px; }
+th { text-align: left; font-weight: 500; font-size: 12px; color: var(--mu); padding: 9px 10px; background: var(--hi); }
+td { padding: 9px 10px; border-top: 1px solid var(--bd); vertical-align: top; }
+
+/* ---------- unit card (register page) ---------- */
+.unit { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.unit.blocked { border-color: var(--rt); }
+
+/* ---------- checklist (graduation page) ---------- */
+.check { display: flex; gap: 10px; align-items: flex-start; padding: 10px 0; border-top: 1px solid var(--bd); }
+.check:first-child { border-top: none; }
+.tick { width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex: none; }
+.tick.g { background: var(--gb); color: var(--gt); }
+.tick.r { background: var(--rb); color: var(--rt); }
+.tick.a { background: var(--ab); color: var(--at); }
+
+/* ---------- chat (advisor page) ---------- */
+.chat { height: 340px; overflow-y: auto; padding: 12px; background: var(--bg); border: 1px solid var(--bd); border-radius: 10px; margin-bottom: 10px; display: flex; flex-direction: column; gap: 8px; }
+.msg { max-width: 82%; padding: 9px 12px; border-radius: 12px; font-size: 13px; }
+.msg.bot { background: var(--sf); border: 1px solid var(--bd); align-self: flex-start; }
+.msg.me { background: var(--primary-blue); color: #fff; align-self: flex-end; }
+.msg .src { display: block; font-size: 11px; color: var(--mu); margin-top: 6px; }
+.msg.sys { align-self: center; background: var(--ab); color: var(--at); font-size: 12px; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 800px) {
+  .shell { grid-template-columns: 1fr; }
+  .side { display: none; position: static; height: auto; }
+  .side.open { display: flex; }
+  .mbar { display: flex; }
+  .welcome { padding: 14px 14px 0; }
+  .rule { margin: 12px 14px 0; }
+  .main { padding: 14px; }
+}
+
+/* ---------- additions for the React app ---------- */
+textarea { min-height: 70px; resize: vertical; }
+.btn.danger { background: var(--danger-text); color: var(--card-background); }
+.sm.on { background: var(--hi); color: var(--br); border-color: var(--br); }
+.num { width: 76px; }
+.row-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 16px; }
+.login-card { width: 100%; max-width: 380px; background: var(--sf); border: 1px solid var(--bd); border-radius: 12px; padding: 22px; }
+.login-card .logo { width: 44px; height: 44px; font-size: 15px; background: var(--primary-blue); color: #fff; margin-bottom: 10px; }
+.banner { border-radius: 8px; padding: 9px 12px; margin-bottom: 12px; font-size: 13px; }
+.banner.r { background: var(--rb); color: var(--rt); }
+.banner.g { background: var(--gb); color: var(--gt); }
+.empty { color: var(--mu); text-align: center; padding: 24px; }
+.spin { color: var(--mu); padding: 24px; text-align: center; }
+a.link { color: var(--br); text-decoration: underline; }
+
+/* ---------- student dashboard sections ---------- */
+.notice { display: block; background: var(--notice-bg); color: var(--notice-text); border-radius: 8px; padding: 9px 12px; margin-top: 8px; font-size: 13px; }
+.notice.ok { background: var(--gb); color: var(--gt); }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 800px) { .two-col { grid-template-columns: 1fr; } }
+.legend { display: flex; flex-direction: column; gap: 8px; margin: 8px 0; }
+.unit-line { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-top: 1px solid var(--bd); font-size: 13px; }
+.unit-line:first-of-type { border-top: none; }
